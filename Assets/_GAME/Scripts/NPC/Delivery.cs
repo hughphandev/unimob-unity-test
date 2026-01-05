@@ -171,7 +171,7 @@ public class DeliveryWaitForCustomer : IDeliveryState
                 product.DOMove(customer.carryTrans.position + new Vector3(0, i * GameConstant.carryOffset), 0.5f).OnComplete(() =>
                 {
                     product.SetParent(customer.carryTrans);
-                    var goldEarn = GameManager.Instance.gameData.productData.First(x => x.id == owner.production.currentInfo.productId).productSellPrice * (1 + owner.production.currentLevel * GameConstant.productionRatePerLevel);
+                    var goldEarn = owner.production.productInfo.productSellPrice * (1 + owner.production.currentLevel * GameConstant.productionRatePerLevel);
                     Debug.Log($"goldEarn: {goldEarn}, id: {owner.production.currentInfo.productId}");
                     lock (this)
                     {

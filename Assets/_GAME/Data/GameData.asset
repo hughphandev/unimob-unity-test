@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingData:
   - id: building_tomato_1
+    tag: -1
     buildTime: 10
     buildPrice: 100
     baseUpgradePrice: 500
@@ -21,6 +22,7 @@ MonoBehaviour:
     productId: product_tomato_1
     productCount: 3
   - id: building_tomato_2
+    tag: -1
     buildTime: 10
     buildPrice: 1000
     baseUpgradePrice: 2500
@@ -28,6 +30,7 @@ MonoBehaviour:
     productId: product_tomato_2
     productCount: 3
   - id: building_tomato_3
+    tag: -1
     buildTime: 10
     buildPrice: 5000
     baseUpgradePrice: 10000
@@ -35,6 +38,7 @@ MonoBehaviour:
     productId: product_tomato_3
     productCount: 3
   - id: building_tomato_4
+    tag: -1
     buildTime: 10
     buildPrice: 10000
     baseUpgradePrice: 50000
@@ -54,5 +58,60 @@ MonoBehaviour:
   - id: product_tomato_4
     productGFX: {fileID: 431050899201095724, guid: 7f43ad0a1dc9942deb52963a8ee6e6f4, type: 3}
     productSellPrice: 25
-  ProductAtlas: {fileID: 4343727234628468602, guid: aab402bd201de4ec0bff5520b96e3bf8, type: 2}
-  CurrencyAtlas: {fileID: 4343727234628468602, guid: 327c8c1be902541ae882636dba3ffc63, type: 2}
+  upgradeData:
+  - id: upgrade_customer
+    icon: {fileID: 21300000, guid: 4544ffb4d02b34231a4f6e675469a7b7, type: 3}
+    type: 1
+    targetTag: 0
+    additionalTarget: 100000
+    mod:
+      type: 0
+      value: 3
+    price: 10000000
+  - id: upgrade_building_all
+    icon: {fileID: 21300000, guid: 4544ffb4d02b34231a4f6e675469a7b7, type: 3}
+    type: 0
+    targetTag: -1
+    additionalTarget: 1000000
+    mod:
+      type: 1
+      value: 1
+    price: 10000000
+  - id: upgrade_building_tomato_1
+    icon: {fileID: 21300000, guid: 40ac2c9f66ad60340ae5ae80eeff9656, type: 3}
+    type: 0
+    targetTag: 0
+    additionalTarget: building_tomato_1
+    mod:
+      type: 1
+      value: 1
+    price: 1000000
+  - id: upgrade_building_tomato_2
+    icon: {fileID: 21300000, guid: 5cba354dcaa12794f97531cfdf5b9bee, type: 3}
+    type: 0
+    targetTag: 0
+    additionalTarget: building_tomato_2
+    mod:
+      type: 1
+      value: 1
+    price: 5000000
+  - id: upgrade_building_tomato_3
+    icon: {fileID: 21300000, guid: 9f6e174293e737a44b0c7c85e4fd86f6, type: 3}
+    type: 0
+    targetTag: 0
+    additionalTarget: building_tomato_3
+    mod:
+      type: 1
+      value: 1
+    price: 40000000
+  - id: upgrade_building_tomato_4
+    icon: {fileID: 21300000, guid: b506a3b43045c0b49ad14f0339fb6956, type: 3}
+    type: 0
+    targetTag: 0
+    additionalTarget: building_tomato_4
+    mod:
+      type: 1
+      value: 1
+    price: 30000000
+  ProductAtlas: {fileID: 100100200, guid: 3abe79085044f5a4388be3896a944e96, type: 3}
+  CurrencyAtlas: {fileID: 100100200, guid: f66715e4bd363f84bb62286ad0a7dc9c, type: 3}

@@ -11,8 +11,9 @@ public enum BuildingState
 
 public class Building : MonoBehaviour
 {
-    public BuildingInfo baseInfo { get; private set; }
     public BuildingInfo currentInfo { get; private set; }
+    public ProductInfo productInfo;
+
     public BuildingState currentState { get; private set; }
     [SerializeField][LabeledArray(typeof(BuildingState))] private Animation[] gfxs;
     public Transform[] productPlaceHolders;
@@ -27,7 +28,8 @@ public class Building : MonoBehaviour
 
     public void Init(BuildingInfo baseInfo)
     {
-        this.baseInfo = this.currentInfo = baseInfo;
+        this.currentInfo = baseInfo;
+        this.productInfo = GameManager.Instance.gameData.productData.First(x => x.id == currentInfo.productId);
         this.currentLevel = 0;
         this.currentState = BuildingState.PlaceHolder;
         OnEnter(this.currentState);
@@ -108,7 +110,6 @@ public class Building : MonoBehaviour
                     var index = Array.FindIndex(productPlaceHolders, 0, currentInfo.productCount, x => x.transform.childCount == 0);
                     if (index >= 0)
                     {
-                        var productInfo = GameManager.Instance.gameData.productData.First(x => x.id == currentInfo.productId);
                         Instantiate(productInfo.productGFX, productPlaceHolders[index].transform);
                     }
                     timer = currentInfo.productionTime;

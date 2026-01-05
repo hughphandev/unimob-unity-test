@@ -15,8 +15,12 @@ public class GameManager : Singleton<GameManager>
     public Delivery deliveryPrefab;
     public Customer customerPrefab;
 
+    public float currentCustomerCount = 1;
+
     public List<Delivery> activeDeliveries = new List<Delivery>();
     public List<Customer> activeCustomers = new List<Customer>();
+
+    public List<UpgradeInfo> currentUpgrades = new List<UpgradeInfo>();
 
     public long currentGold { get; private set; }
 
@@ -53,7 +57,8 @@ public class GameManager : Singleton<GameManager>
         while (true)
         {
             var index = Array.FindIndex(market.currentCustomers, x => x == null);
-            if (index >= 0)
+            int count = market.currentCustomers.Count(x => x != null);
+            if (index >= 0 && count < currentCustomerCount)
             {
                 var customer = customerPrefab.Use(market.customerStart.position, Quaternion.identity, null);
                 customer.Init(index);
@@ -67,5 +72,27 @@ public class GameManager : Singleton<GameManager>
     {
         currentGold += amount;
         ingameUI.UpdateGold(currentGold);
+    }
+
+    public void ApplyUpgrade(UpgradeInfo info)
+    {
+        currentUpgrades.Add(info);
+        switch (info.type)
+        {
+            case UpgradeType.Production:
+                {
+                    foreach (var building in currentBuildings)
+                    {
+                        if (Utils.OverlapFlag(info.targetTag, building.currentInfo.tag) || building.currentInfo.id == info.additionalTarget)
+                        {
+                            Utils.ApplyMod(ref building.productInfo.productSellPrice, info.mod, GameManager.Instance.gameData.productData.First(x => x.id == building.productInfo.id).productSellPrice);
+                        }
+                    }
+                }
+                break;
+            case UpgradeType.Customer:
+                Utils.ApplyMod(ref currentCustomerCount, info.mod, market.currentCustomers.Length);
+                break;
+        }
     }
 }

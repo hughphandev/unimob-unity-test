@@ -717,6 +717,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &434320516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 434320517}
+  m_Layer: 5
+  m_Name: ConstructionProgress
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &434320517
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434320516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 719520030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &440686110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1195,7 @@ RectTransform:
   m_Children:
   - {fileID: 2011674535}
   - {fileID: 2141194418}
+  - {fileID: 434320517}
   - {fileID: 20246812}
   - {fileID: 1096096142}
   - {fileID: 8381305433476800385}
@@ -1184,7 +1220,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingView: {fileID: 20246814}
   upgradeView: {fileID: 1096096144}
+  upgradeUI: {fileID: 8381305433476800387}
+  btnUpgrade: {fileID: 905915204}
   constructionProgressPrefab: {fileID: 883336790883819987, guid: a7ee79bc38efa124aa1a2c18813bf2a2, type: 3}
+  progressHolder: {fileID: 434320517}
   tmpGold: {fileID: 1883512927}
 --- !u!1 &740197508
 GameObject:
@@ -3086,8 +3125,10 @@ MonoBehaviour:
   ingameUI: {fileID: 719520031}
   deliveryPrefab: {fileID: 1348501958511019949, guid: a798966e7b2044a12be9b4ba810e52ad, type: 3}
   customerPrefab: {fileID: 2792566282904951094, guid: 9e73c309783284fd2bb50baca4fe3da9, type: 3}
+  currentCustomerCount: 1
   activeDeliveries: []
   activeCustomers: []
+  currentUpgrades: []
 --- !u!1 &1960254227
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,6 +3592,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1201501036871561121, guid: 25dc167f3331640a8b38f1c030f01b38, type: 3}
   m_PrefabInstance: {fileID: 8381305433476800384}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8381305433476800387 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7406929858235183676, guid: 25dc167f3331640a8b38f1c030f01b38, type: 3}
+  m_PrefabInstance: {fileID: 8381305433476800384}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e538878c340d0e74080c614d54bb17aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
